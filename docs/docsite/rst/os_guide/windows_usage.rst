@@ -161,8 +161,8 @@ access a folder on the same host:
         name: '{{ item.name }}'
         password: '{{ item.password }}'
         groups: LocalGroup
-        update_password: false
-        password_never_expires: true
+        update_password: no
+        password_never_expires: yes
       loop:
       - name: User1
         password: Password1
@@ -185,7 +185,7 @@ access a folder on the same host:
     - name: Remove parent inheritance of Development folder
       win_acl_inheritance:
         path: C:\Development
-        reorganize: true
+        reorganize: yes
         state: absent
 
 Domain
@@ -201,7 +201,7 @@ are created:
         name: '{{ item.name }}'
         upn: '{{ item.name }}@MY.DOMAIN.COM'
         password: '{{ item.password }}'
-        password_never_expires: false
+        password_never_expires: no
         groups:
         - Test User
         - Application
